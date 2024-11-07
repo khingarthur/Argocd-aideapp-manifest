@@ -23,7 +23,7 @@ spec:
     spec: # Pod spec
       containers:
       - name: aideapp-container
-        image: khingarthur/aide-app:latest
+        image: khingarthur/aide-app:9
         ports:
         - containerPort: 3000
         

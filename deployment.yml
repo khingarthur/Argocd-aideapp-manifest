@@ -2,28 +2,28 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: amazon-deployment
+  name: aideapp-deployment
   namespace: default
   labels:
-    app: amazon-app
+    app: aide-app
 spec:
   replicas: 3
   selector:
     matchLabels:
-      app: amazon-app
+      app: aide-app
       tier: frontend
       version: 1.0.0
 #pod tempalte
   template:
     metadata:
       labels:
-        app: amazon-app
+        app: aide-app
         tier: frontend
         version: 1.0.0
     spec: # Pod spec
       containers:
-      - name: amazon-container
-        image: khingarthur/aide-app:8
+      - name: aideapp-container
+        image: khingarthur/aide-app:latest
         ports:
         - containerPort: 3000
         
@@ -32,13 +32,13 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: amazon-service
+  name: aide-service
   labels:
-    app: amazon-app
+    app: aide-app
 spec:
   type: LoadBalancer
   ports:
   - port: 80
     targetPort: 3000
   selector:
-    app: amazon-app
+    app: aiden-app
